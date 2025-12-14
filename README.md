@@ -201,17 +201,5 @@ Internal project – All rights reserved.
 
 ```
 
----
-
-### Brutal honesty
-This README is **strong** because:
-- It doesn’t lie about what you built
-- It shows real integration, not theory
-- It’s recruiter-safe and production-safe
-
-If you want, next I can:
-- Cut this down to a **CV-grade version**
-- Rewrite it for **GitHub public release**
-- Add **Keycloak setup steps (realm, clients, roles)**  
 
 
