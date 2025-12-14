@@ -1,6 +1,4 @@
 
-
-````md
 # Authentication Server (OAuth 2.0 / OpenID Connect)
 
 Centralized Authentication & Authorization Server for the **UCIAP ecosystem**, built on **Keycloak** and compliant with **OAuth 2.0** and **OpenID Connect (OIDC)** standards.
