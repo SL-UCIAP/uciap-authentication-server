@@ -151,6 +151,9 @@ Clients **must validate tokens using JWKs**, not hardcoded secrets.
 ```text
 JWK URL:
 http://localhost:8080/realms/UCIAP/protocol/openid-connect/certs
+
+JWK URL in application.properties:
+spring.security.oauth2.resourceserver.jwt.jwk-set-uri=http://127.0.0.1:8180/realms/ServeX/protocol/openid-connect/certs
 ```
 
 ---
