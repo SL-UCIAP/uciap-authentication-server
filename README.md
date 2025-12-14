@@ -195,11 +195,7 @@ Used as the central authentication authority for all UCIAP microservices.
 
 ---
 
-## 📄 License
 
-Internal project – All rights reserved.
-
-```
 
 
 
