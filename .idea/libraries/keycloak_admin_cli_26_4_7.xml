@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="keycloak-admin-cli-26.4.7">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/bin/client/keycloak-admin-cli-26.4.7.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

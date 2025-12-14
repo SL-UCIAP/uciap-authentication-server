@@ -1,0 +1,344 @@
+/* Modern Aurora Glass Keycloak Theme - Fixed Register Alignment */
+
+:root {
+    --primary-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); /* Indigo to Purple */
+    --surface-glass: rgba(255, 255, 255, 0.03);
+    --border-glass: rgba(255, 255, 255, 0.08);
+    --text-primary: #ffffff;
+    --text-secondary: #94a3b8;
+    --input-bg: rgba(0, 0, 0, 0.2);
+    --radius-md: 16px;
+    --radius-sm: 12px;
+}
+
+/* Reset Patternfly defaults */
+.login-pf {
+    background: none;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Modern Deep Background with Aurora Blurs */
+.login-pf body {
+    background: #0f172a; /* Slate 900 */
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    color: var(--text-primary);
+}
+
+/* Abstract Floating Orbs */
+.login-pf body::before,
+.login-pf body::after {
+    content: '';
+    position: absolute;
+    width: 60vw;
+    height: 60vw;
+    border-radius: 50%;
+    filter: blur(100px);
+    z-index: -1;
+    opacity: 0.6;
+    animation: floatOrb 20s ease-in-out infinite alternate;
+}
+
+.login-pf body::before {
+    background: radial-gradient(circle, #4f46e5 0%, transparent 70%);
+    top: -10%;
+    left: -10%;
+}
+
+.login-pf body::after {
+    background: radial-gradient(circle, #c026d3 0%, transparent 70%);
+    bottom: -10%;
+    right: -10%;
+    animation-delay: -5s;
+}
+
+@keyframes floatOrb {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(50px, 50px) scale(1.1); }
+}
+
+/* Typography Reset */
+h1#kc-page-title {
+    margin-top: 0;
+    font-weight: 800;
+    color: var(--text-primary);
+    font-size: 2rem;
+    text-transform: none;
+    letter-spacing: -0.5px;
+    font-family: inherit;
+    text-shadow: none;
+    text-align: center !important; /* Force center alignment */
+    margin-bottom: 2rem;
+    width: 100%;
+    display: block;
+}
+
+/* The Card - Glassmorphism Style */
+.card-pf {
+    margin: 0 auto;
+    background: var(--surface-glass);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    box-shadow: 
+        0 25px 50px -12px rgba(0, 0, 0, 0.5),
+        inset 0 0 0 1px var(--border-glass);
+    padding: 48px;
+    max-width: 480px;
+    border: none;
+    border-radius: 24px;
+    position: relative;
+    animation: slideUpFade 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.card-pf::before, .card-pf::after { display: none; }
+
+@keyframes slideUpFade {
+    0% { opacity: 0; transform: translateY(40px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* --- STANDARD INPUT FIELDS --- */
+.pf-c-form-control {
+    background: var(--input-bg);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-sm);
+    height: auto !important; 
+    min-height: 48px;
+    line-height: 1.5;
+    padding: 10px 16px;
+    font-size: 15px;
+    width: 100%;
+    color: var(--text-primary);
+    font-family: inherit;
+    box-shadow: none;
+    box-sizing: border-box;
+    display: block;
+    transition: all 0.2s ease;
+}
+
+.pf-c-form-control:focus {
+    outline: none;
+    background: rgba(0, 0, 0, 0.4);
+    border-color: #818cf8;
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+}
+
+.pf-c-form-control::placeholder {
+    color: #64748b;
+    opacity: 1;
+}
+
+/* Autofill Fix */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px #0f172a inset !important;
+    -webkit-text-fill-color: white !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+/* --- PASSWORD FIELD & GROUP FIX --- */
+.pf-c-input-group {
+    display: flex;
+    width: 100%;
+    position: relative;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.pf-c-input-group .pf-c-form-control {
+    background: var(--input-bg) !important;
+    border: 1px solid var(--border-glass) !important;
+    border-right: none !important;
+    border-radius: var(--radius-sm) 0 0 var(--radius-sm) !important;
+    color: var(--text-primary) !important;
+    height: auto !important; 
+    min-height: 48px;
+    box-shadow: none !important;
+    z-index: 2;
+}
+
+.pf-c-input-group .pf-c-form-control:focus {
+    background: rgba(0, 0, 0, 0.4) !important;
+    border-color: #818cf8 !important;
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15) !important;
+    z-index: 3;
+}
+
+.pf-c-input-group .pf-c-button {
+    background: var(--input-bg) !important;
+    border: 1px solid var(--border-glass) !important;
+    border-left: none !important;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0 !important;
+    color: var(--text-secondary) !important;
+    padding: 0 20px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    margin: 0 !important;
+}
+
+.pf-c-input-group .pf-c-button:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: white !important;
+}
+
+.pf-c-input-group .pf-c-form-control:focus + .pf-c-button {
+    border-color: #818cf8 !important;
+    border-left: 1px solid rgba(129, 140, 248, 0.3) !important;
+}
+
+/* Labels */
+label.pf-c-form__label {
+    font-weight: 500;
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin-bottom: 8px;
+    text-transform: none;
+    font-family: inherit;
+    letter-spacing: normal;
+    display: block;
+}
+
+/* Primary Button */
+.pf-c-button.pf-m-primary {
+    background: var(--primary-gradient);
+    border: none;
+    border-radius: var(--radius-md);
+    padding: 14px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 100%;
+    text-transform: none;
+    letter-spacing: normal;
+    font-family: inherit;
+    box-shadow: 0 10px 20px -5px rgba(99, 102, 241, 0.4);
+    position: relative;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+.pf-c-button.pf-m-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 25px -5px rgba(99, 102, 241, 0.5);
+}
+
+.pf-c-button.pf-m-primary:active {
+    transform: translateY(0);
+}
+
+/* Secondary Buttons */
+.pf-c-button.pf-m-control {
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-sm);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+    transition: all 0.2s ease;
+    padding: 8px 16px;
+}
+
+.pf-c-button.pf-m-control:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #fff;
+}
+
+/* Links */
+.login-pf a {
+    color: #a5b4fc;
+    text-decoration: none;
+    transition: color 0.2s ease;
+    font-weight: 500;
+}
+
+.login-pf a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+/* Header */
+#kc-header-wrapper {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -1px;
+    padding: 40px 10px 30px;
+    text-transform: none;
+    font-family: inherit;
+    color: white;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    text-align: center;
+}
+div.kc-logo-text { display: none; }
+
+/* Language Dropdown */
+#kc-locale ul {
+    background: #1e293b;
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-sm);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    padding: 5px;
+    display: none;
+}
+#kc-locale-dropdown:hover ul { display: block; }
+#kc-locale-dropdown a { color: var(--text-secondary); padding: 8px 12px; display: block; }
+#kc-locale-dropdown a:hover { background: rgba(255, 255, 255, 0.1); color: white; }
+#kc-locale-dropdown button { color: var(--text-secondary); background: transparent; border: none; padding: 10px; }
+#kc-locale-dropdown button:hover { color: white; }
+
+/* Layout Utilities */
+.login-pf .container {
+    padding-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    flex-direction: column;
+}
+
+/* --- FIXED ALIGNMENT FOR FORM OPTIONS --- */
+#kc-form-options {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* If there is only one item (like 'Back to Login' on register page), center it */
+#kc-form-options:has(> .span:only-child), 
+#kc-form-options > span:only-child {
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+}
+
+#kc-form-options .checkbox { margin: 0; color: var(--text-secondary); }
+
+/* --- FIXED ALIGNMENT FOR "REGISTER" LINKS --- */
+/* Targeted fix for "New User? Register" link alignment */
+#kc-registration {
+    margin-top: 30px;
+    text-align: center !important;
+    width: 100%;
+    display: block;
+}
+
+#kc-registration span {
+    color: var(--text-secondary);
+    font-size: 15px;
+}
+
+
+
+.form-group { margin-bottom: 20px; }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .card-pf { padding: 30px 20px; width: 90%; margin: 20px auto; }
+}
